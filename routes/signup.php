@@ -6,6 +6,12 @@
     //Istancier la classe
     $user = new UserController($_POST['email'], $_POST['password']);
 
+    if($user -> isDataValid()){
+      //Ajouter le user dans la BD
+    }else{
+      header('Location: /login.php?errorEmail=InvalidInput&errorPassword=InvalidInput');
+    }
+
   }else{
     header('Location: /login.php');
   }

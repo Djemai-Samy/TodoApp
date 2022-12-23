@@ -3,6 +3,8 @@ class UserController{
   private $email;
   private $password;
 
+  private const MIN_PASSWORD_LENGTH = 6;
+
 
   function __construct(string $email, string $password){
 
@@ -29,16 +31,17 @@ class UserController{
     return $this;
   }
 
-  function isEmailValid(){
+  function isEmailValid() : bool{
     // trouver un moyen pour tester si une sous chaine est dans une chaine
     return filter_var($this -> email, FILTER_VALIDATE_EMAIL);
   }
 
-  function isPasswordValid(){
+  function isPasswordValid() : bool{
     //Teste si la taille password est sup. a 6 ou pas:
-    return strlen($this -> password) >= 6;
-   
+    return strlen($this -> password) >= self::MIN_PASSWORD_LENGTH;
+  }
+
+  function isDataValid() : bool{
+    return $this -> isEmailValid() && $this -> isPasswordValid();
   }
 }
-
-// return strlen($this -> password) >= self::MIN_PASSWORD_LENGTH;
