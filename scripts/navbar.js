@@ -23,3 +23,13 @@ menuButton.addEventListener("click", function(){
 //0, "", null, undefined, [], {} -> false
 
 //1, 2, "sdfsf", ['df']; {test:"test"} -> true
+
+
+//CLI: Comand line interface
+
+
+// sam.djm93@gmail.com
+
+// ^[a-z]|[1-9]@[a-z][1-9].[a-z]
+
+// page.js

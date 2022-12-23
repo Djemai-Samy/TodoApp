@@ -1,7 +1,14 @@
 <?php
+
+include_once "../models/UserModel.php";
 class UserController{
   private $email;
   private $password;
+  private $id;
+  private $avatarURL;
+  private $role;
+
+  private $userModel;
 
   private const MIN_PASSWORD_LENGTH = 6;
 
@@ -10,7 +17,6 @@ class UserController{
 
     $this -> email = $email;
     $this -> password = $password;
-
   }
 
   /**
@@ -19,6 +25,30 @@ class UserController{
   public function getEmail() : string
   {
     return $this->email;
+  }
+
+  /**
+   * Get the value of id
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  /**
+   * Get the value of avatarURL
+   */
+  public function getAvatar()
+  {
+    return $this->avatarURL;
+  }
+
+  /**
+   * Get the value of role
+   */
+  public function getRole()
+  {
+    return $this->role;
   }
 
   /**
@@ -56,6 +86,36 @@ class UserController{
     // ['passwordError=InputInvalid'] -> 'passwordError=InputInvalid'
     // ['emailError=InputInvalid', 'passwordError=InputInvalid'] -> 'emailError=InputInvalid&passwordError=InputInvalid'
     return join("&", $errors);
-  
   }
+
+  function signupUser(){
+    //Utiliser une class UserModel pour ajouter les user dans la DB.
+    $userModel = new UserModel($this -> email, $this -> password);
+    $userModel -> addToDB();
+
+  }
+
+  function exist(){
+    $userModel = new UserModel($this -> email, $this -> password);
+    
+    $userTab = $userModel -> fetch(); 
+    var_dump($userTab);
+    if(count($userTab) === 0){
+      return false;
+    }
+
+    if($userTab['password'] !== $this -> password){
+      return false;
+    }
+    
+    
+    $this -> id = $userTab['id'];
+    $this -> avatarURL = $userTab['avatar'];
+    $this -> role = $userTab['role'];
+
+    return true;
+  }
+
+
+  
 }

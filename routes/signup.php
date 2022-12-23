@@ -7,7 +7,10 @@
     $user = new UserController($_POST['email'], $_POST['password']);
 
     if($user -> isDataValid()){
-      //Ajouter le user dans la BD
+      //Todo: Tester si l'utilisateur s'est deja inscrit
+      //ajouter le user dans la DB:
+      $user -> signupUser();
+
     }else{
       $returnData = $user -> getErrors();
       header('Location: /login.php?' . $returnData);

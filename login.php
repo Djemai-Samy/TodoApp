@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -25,6 +29,15 @@
           <p>
             <?= isset($_GET['passwordError']) ? "Mot de passe trop court" : "" ?>
           </p>
+          <button>Valider</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Connexion</h2>
+        <form action="./routes/signin.php" method="post">
+          <input type="email" name="email" placeholder="john@exemple.com">
+          <input type="password" name="password" placeholder="Votre mot de passe">
           <button>Valider</button>
         </form>
       </section>
