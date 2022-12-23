@@ -9,7 +9,8 @@
     if($user -> isDataValid()){
       //Ajouter le user dans la BD
     }else{
-      header('Location: /login.php?errorEmail=InvalidInput&errorPassword=InvalidInput');
+      $returnData = $user -> getErrors();
+      header('Location: /login.php?' . $returnData);
     }
 
   }else{

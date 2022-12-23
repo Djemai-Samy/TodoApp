@@ -18,12 +18,12 @@
           <input type="email" name="email" placeholder="john.doe@exemple.com" />
           <!-- Tester si la clé errorEmail existe dans le tableau $_GET -->
           <p>
-            <?= isset($_GET['errorEmail']) ? "Email invalide" : "" ?>
+            <?= isset($_GET['emailError']) ? "Email invalide" : "" ?>
           </p>
           
           <input type="password" name="password" placeholder="Mot de passe" />
           <p>
-            <?= isset($_GET['errorPassword']) ? "Mot de passe trop court" : "" ?>
+            <?= isset($_GET['passwordError']) ? "Mot de passe trop court" : "" ?>
           </p>
           <button>Valider</button>
         </form>

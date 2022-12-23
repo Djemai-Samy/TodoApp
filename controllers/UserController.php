@@ -44,4 +44,18 @@ class UserController{
   function isDataValid() : bool{
     return $this -> isEmailValid() && $this -> isPasswordValid();
   }
+
+  function getErrors(){
+    //email pas valid et password valid: emailError=InputInvalid
+    //email valid et passworf pas valid: passwordError=InputInvalid
+    //email pas valid et password pas valid: emailError=InputInvalid&passwordError=InputInvalid
+    $errors = [];
+    !$this ->isEmailValid() ? array_push($errors, "emailError=InputInvalid") : null;
+    !$this ->isPasswordValid() ? array_push($errors, "passwordError=InputInvalid") : null;
+    // ['emailError=InputInvalid'] -> 'emailError=InputInvalid'
+    // ['passwordError=InputInvalid'] -> 'passwordError=InputInvalid'
+    // ['emailError=InputInvalid', 'passwordError=InputInvalid'] -> 'emailError=InputInvalid&passwordError=InputInvalid'
+    return join("&", $errors);
+  
+  }
 }
