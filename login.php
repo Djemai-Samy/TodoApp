@@ -47,13 +47,23 @@ if(isset($_GET['connexion'])){
       <section>
         <h2>Inscription</h2>
         <form action="/routes/signup.php" method="post">
-          <input type="email" name="email" placeholder="john.doe@exemple.com" />
+          <input 
+            class='<?= $inscriptionEmailError !=="" ? "inputError" : "" ?>' 
+            type="email" 
+            name="email" 
+            placeholder="john.doe@exemple.com" 
+          />
           <!-- Tester si la clé errorEmail existe dans le tableau $_GET -->
           <p class="error">
             <?= $inscriptionEmailError ?>
           </p>
           
-          <input type="password" name="password" placeholder="Mot de passe" />
+          <input 
+            class='<?= $inscriptionPasswordError !=="" ? "inputError" : "" ?>' 
+            type="password" 
+            name="password" 
+            placeholder="Mot de passe"
+          />
           <p class="error">
             <?= $inscriptionPasswordError ?>
           </p>
@@ -64,11 +74,21 @@ if(isset($_GET['connexion'])){
       <section>
         <h2>Connexion</h2>
         <form action="./routes/signin.php" method="post">
-          <input type="email" name="email" placeholder="john@exemple.com">
+          <input 
+            class='<?= $connexionEmailError !=="" ? "inputError" : "" ?>' 
+            type="email" 
+            name="email" 
+            placeholder="john@exemple.com"
+          >
           <p class="error">
             <?= $connexionEmailError ?>
           </p>
-          <input type="password" name="password" placeholder="Votre mot de passe">
+          <input 
+            class='<?= $connexionPasswordError !=="" ? "inputError" : "" ?>' 
+            type="password" 
+            name="password" 
+            placeholder="Votre mot de passe"
+          >
           <p class="error">
             <?= $connexionPasswordError ?>
           </p>
