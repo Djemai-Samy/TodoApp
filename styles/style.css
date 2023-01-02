@@ -31,6 +31,42 @@ nav > ul > li, nav a{
 #menu-button{
   color: white;
   font-size: 40px;
+  display: none;
+}
+
+.error{
+  color:red;
+  font-size: 0.9em;
+}
+
+form{
+  background-color: rgb(232, 232, 232);
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0;
+}
+
+input{
+  margin: 0.5em 0;
+  padding: 0.5em;
+  border: none;
+  border-radius: 0.5em;
+}
+
+input:focus{
+  outline: none;
+}
+
+button{
+  background-color: rgb(26, 51, 116);
+  padding: 0.5em;
+  min-width: 100px;
+  color:whitesmoke;
+  border-radius: 0.5em;
+  margin: 0.5em 0;
 }
 
 /* ctrl  + F5 */
@@ -41,6 +77,9 @@ nav > ul > li, nav a{
     display: block;
     fill: white;
     width: 25px;
+  }
+  #menu-button{
+    display: initial;
   }
 
   nav > ul{

@@ -49,12 +49,12 @@ if(isset($_GET['connexion'])){
         <form action="/routes/signup.php" method="post">
           <input type="email" name="email" placeholder="john.doe@exemple.com" />
           <!-- Tester si la clé errorEmail existe dans le tableau $_GET -->
-          <p>
+          <p class="error">
             <?= $inscriptionEmailError ?>
           </p>
           
           <input type="password" name="password" placeholder="Mot de passe" />
-          <p>
+          <p class="error">
             <?= $inscriptionPasswordError ?>
           </p>
           <button>Valider</button>
@@ -65,11 +65,11 @@ if(isset($_GET['connexion'])){
         <h2>Connexion</h2>
         <form action="./routes/signin.php" method="post">
           <input type="email" name="email" placeholder="john@exemple.com">
-          <p>
+          <p class="error">
             <?= $connexionEmailError ?>
           </p>
           <input type="password" name="password" placeholder="Votre mot de passe">
-          <p>
+          <p class="error">
             <?= $connexionPasswordError ?>
           </p>
           
