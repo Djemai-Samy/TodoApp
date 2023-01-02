@@ -13,7 +13,7 @@
 
     }else{
       $returnData = $user -> getErrors();
-      header('Location: /login.php?' . $returnData);
+      header('Location: /login.php?inscription=error&' . $returnData);
     }
 
   }else{

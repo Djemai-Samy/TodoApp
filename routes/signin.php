@@ -12,7 +12,7 @@ if(!(isset($_POST['email'], $_POST['password']))){
 $user = new UserController($_POST['email'], $_POST['password']);
 
 if(!($user -> isDataValid())){
-  header("Location: /login.php?" . $user -> getErrors());
+  header("Location: /login.php?connexion=error&" . $user -> getErrors());
   die();
 }
 
