@@ -36,4 +36,15 @@ class UserModel extends DB{
     
     return $userFromDB;
   }
+
+  static function fetchByID($id){
+    $connect = DB::getConnection();
+
+    $stmt = $connect -> getConnect() -> prepare('SELECT * FROM users WHERE id=?');
+
+    $stmt -> bindParam(1, $id);
+    $res = $stmt ->execute();
+    $userFromDB = $stmt -> fetch(PDO::FETCH_ASSOC);
+    return $userFromDB;
+  }
 }

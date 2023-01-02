@@ -118,4 +118,16 @@ class UserController{
 
     return $userFromDB['password'] === $this -> password;
   }
+
+  static function createUserFromId($id){
+    $userFromDB = UserModel::fetchByID($id);
+   
+    return $userFromDB;
+  }
+
+  function isImageValid($avatar){
+    $imageInfo = pathinfo($avatar['name']);
+
+    return in_array($imageInfo['extension'], array('jpg', 'jpeg', 'png', 'gif'));
+  }
 }
