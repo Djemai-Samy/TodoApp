@@ -1,5 +1,33 @@
 <?php
 session_start();
+
+$inscriptionEmailError = "";
+$inscriptionPasswordError = "";
+
+$connexionEmailError = "";
+$connexionPasswordError = "";
+
+
+if(isset($_GET['inscription'])){
+  if(isset($_GET['emailError'])){
+    $inscriptionEmailError = $_GET['emailError'] === "InputInvalid" ? "Email incorrecte" : "Email existe deja!";
+  }
+
+  if(isset($_GET['passwordError'])){
+    $inscriptionPasswordError = $_GET['passwordError'] === "InputInvalid" ? "Mot de passe trop court" : "";
+  }
+}
+
+if(isset($_GET['connexion'])){
+  if(isset($_GET['emailError'])){
+    $connexionEmailError = $_GET['emailError'] === "InputInvalid" ? "Email incorrecte" : "Email n'existe pas!";
+  }
+
+  if(isset($_GET['passwordError'])){
+    $connexionPasswordError = $_GET['passwordError'] === "InputInvalid" ? "Mot de passe trop court" : "Mauvais mot de passe!";
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,12 +50,12 @@ session_start();
           <input type="email" name="email" placeholder="john.doe@exemple.com" />
           <!-- Tester si la clé errorEmail existe dans le tableau $_GET -->
           <p>
-            <?= isset($_GET['emailError']) && isset($_GET['inscription']) ? "Email invalide" : "" ?>
+            <?= $inscriptionEmailError ?>
           </p>
           
           <input type="password" name="password" placeholder="Mot de passe" />
           <p>
-            <?= isset($_GET['passwordError'])  && isset($_GET['inscription']) ? "Mot de passe trop court" : "" ?>
+            <?= $inscriptionPasswordError ?>
           </p>
           <button>Valider</button>
         </form>
@@ -37,7 +65,14 @@ session_start();
         <h2>Connexion</h2>
         <form action="./routes/signin.php" method="post">
           <input type="email" name="email" placeholder="john@exemple.com">
+          <p>
+            <?= $connexionEmailError ?>
+          </p>
           <input type="password" name="password" placeholder="Votre mot de passe">
+          <p>
+            <?= $connexionPasswordError ?>
+          </p>
+          
           <button>Valider</button>
         </form>
       </section>

@@ -17,6 +17,8 @@ class UserController{
 
     $this -> email = $email;
     $this -> password = $password;
+
+    $this -> userModel = new UserModel($email, $password);
   }
 
   /**
@@ -103,11 +105,6 @@ class UserController{
     if(count($userTab) === 0){
       return false;
     }
-
-    if($userTab['password'] !== $this -> password){
-      return false;
-    }
-    
     
     $this -> id = $userTab['id'];
     $this -> avatarURL = $userTab['avatar'];
@@ -116,6 +113,9 @@ class UserController{
     return true;
   }
 
+  function isPasswordCorrect(){
+    $userFromDB = $this -> userModel -> fetch();
 
-  
+    return $userFromDB['password'] === $this -> password;
+  }
 }

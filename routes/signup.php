@@ -9,6 +9,10 @@
     if($user -> isDataValid()){
       //Todo: Tester si l'utilisateur s'est deja inscrit
       //ajouter le user dans la DB:
+      if($user -> exist()){
+        header('Location: /login?inscription=error&emailError=EmailExist');
+        die();
+      }
       $user -> signupUser();
 
     }else{

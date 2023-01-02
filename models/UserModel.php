@@ -21,7 +21,7 @@ class UserModel extends DB{
     $stmt -> execute();
   }
 
-  function fetch() : array{
+  function fetch() : array {
     $stmt = $this -> getConnect() -> prepare('SELECT * FROM users WHERE email=?');
 
     $stmt -> bindParam(1, $this ->email);
@@ -29,6 +29,10 @@ class UserModel extends DB{
     $res = $stmt -> execute();
     
     $userFromDB = $stmt -> fetch(PDO::FETCH_ASSOC);
+
+    if(is_bool($userFromDB)){
+      return [];
+    }
     
     return $userFromDB;
   }

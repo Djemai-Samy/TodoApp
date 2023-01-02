@@ -18,8 +18,20 @@ if(!($user -> isDataValid())){
 
 //Verifier si l'utilisateur existe
 if(!$user -> exist()){
-  header("Location: /login.php?emailError=EmailDosntExist" );
+  header("Location: /login.php?connexion=error&emailError=EmailDosntExist" );
+  die();
 }
+
+//Implementer la méthode:
+//1. Faire une requete vers la BD avec email.
+//2. Tester si le mot de passe recu est le meme que celui la DB return true sinon false.
+
+if(!$user -> isPasswordCorrect()){
+  header("Location: /login.php?connexion=error&passwordError=PasswordIncorrect" );
+  die();
+}
+
+
 
 $_SESSION["email"] = $user ->getEmail();
 $_SESSION["id"] = $user -> getId();
