@@ -23,5 +23,13 @@ session_start();
       </form>
     </div>
 
+    <section>
+      <h2>Todos</h2>
+      <form action="/routes/addTodo.php" method="POST">
+        <input type="text" name="todo" placeholder="Ajouter une tache" />
+        <button>Ajouter +</button>
+      </form>
+    </section>
+
   </body>
 </html>

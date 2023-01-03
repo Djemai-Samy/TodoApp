@@ -1,12 +1,15 @@
 <?php
 
-include_once "../models/UserModel.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/models/UserModel.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/TodoController.php";
+
 class UserController{
   private $email;
   private $password;
   private $id;
   private $avatarURL;
   private $role;
+  private $todos = [];
 
   private $userModel;
 
@@ -121,8 +124,11 @@ class UserController{
 
   static function createUserFromId($id){
     $userFromDB = UserModel::fetchByID($id);
-   
-    return new self($userFromDB['email'], $userFromDB['password']);
+    $controller = new self($userFromDB['email'], $userFromDB['password']);
+    $controller -> id = $id;
+    $controller -> role = $userFromDB['role'];
+    $controller -> avatarURL = $userFromDB['avatar'];
+    return $controller;
   }
 
   function isImageValid($avatar){
@@ -139,5 +145,11 @@ class UserController{
     //Utiliser le model pour mettre a jour user dans la DB.
     $this ->userModel -> saveImageToDB($image);
     return $image;
+  }
+
+  function addTodo($todo){
+    $todoController = new TodoController($todo, $this -> id);
+
+    $todoController -> addTodo();
   }
 }

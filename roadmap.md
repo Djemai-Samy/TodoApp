@@ -22,8 +22,8 @@ Table: todos: id, contenu, date, isDone, auteurID DONE
 ## Page Profil
 
 - Afficher l'avatar de l'utilisateur, sinon afficher une image par défaut. DONE
-- Un formulaire pour changer l'image de profil.
-- Un script (/routes/uploadAvatar.php), enregistre l'image, et met a jour l'utilisateur dans la base de données.
+- Un formulaire pour changer l'image de profil.DONE
+- Un script (/routes/uploadAvatar.php), enregistre l'image, et met a jour l'utilisateur dans la base de données.DONE
 
 Le todo: il faut TodoController, TodoModel.
 
