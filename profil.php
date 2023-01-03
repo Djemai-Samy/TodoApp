@@ -1,5 +1,7 @@
 <?php
 session_start();
+include_once $_SERVER['DOCUMENT_ROOT']. "/controllers/UserController.php";
+$userController = UserController::createUserFromId($_SESSION['id']);
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +31,23 @@ session_start();
         <input type="text" name="todo" placeholder="Ajouter une tache" />
         <button>Ajouter +</button>
       </form>
+      <i class='fa-solid fa-check'></i>
+      <div>
+        <?php
+          foreach($userController -> getTodos() as $key => $todoTab){
+            echo "
+            <div class='".($todoTab['isDone'] ? "todoDone" : "todoNotDone")."'>
+              <p>".$todoTab['content']."</p>
+              <form action='/routes/validateTodo.php' method='GET'>
+                <button type='submit' name='validate' value='".$todoTab['id']."'>
+                <img src='/images/check.svg' />
+                </button>
+              </form>
+            </div>
+            ";
+          }
+        ?>
+      </div>
     </section>
 
   </body>

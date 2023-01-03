@@ -23,4 +23,12 @@ class TodoController{
     $this -> isDone = $todoTab ["isDone"];
   }
 
+  static function fetchAll($authorID){
+    return TodoModel::fetchAll($authorID);
+  }
+
+  static function validateTodo($todoID){
+    TodoModel::updateIsDone($todoID);
+  }
+
 }

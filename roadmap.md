@@ -27,10 +27,10 @@ Table: todos: id, contenu, date, isDone, auteurID DONE
 
 Le todo: il faut TodoController, TodoModel.
 
-- Un formulaire pour ajouter des taches
-- script pour ajouter un todo dans la base données
+- Un formulaire pour ajouter des taches. DONE
+- script pour ajouter un todo dans la base données. DONE
 
-- afficher la liste des taches de l'utilisateur
+- afficher la liste des taches de l'utilisateur. DONE
 - Ajouter l'option pour valider une tache
 - Ajouter l'option pour supprimer une tache
 

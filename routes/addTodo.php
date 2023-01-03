@@ -7,6 +7,6 @@ if(isset($_POST['todo'])){
   $userController = UserController::createUserFromId($_SESSION['id']);
   $userController -> addTodo($_POST['todo']);
 
-}else{
-  header('Location: /profil.php');
 }
+
+header('Location: /profil.php');

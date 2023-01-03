@@ -89,6 +89,14 @@ button{
   border: 1px solid rgb(26, 51, 116);
 }
 
+.todoNotDone{
+  border-bottom: 2px solid red;
+}
+
+.todoDone{
+  border-bottom: 2px solid green;
+}
+
 /* ctrl  + F5 */
 /* hot raload */
 

@@ -128,6 +128,9 @@ class UserController{
     $controller -> id = $id;
     $controller -> role = $userFromDB['role'];
     $controller -> avatarURL = $userFromDB['avatar'];
+    
+    $controller -> todos = TodoController::fetchAll($id);
+    
     return $controller;
   }
 
@@ -151,5 +154,16 @@ class UserController{
     $todoController = new TodoController($todo, $this -> id);
 
     $todoController -> addTodo();
+  }
+
+  /**
+   * Get the value of todos
+   */
+  public function getTodos(){
+    return $this->todos;
+  }
+
+  function validateTodo($todoID){
+    TodoController::validateTodo($todoID);
   }
 }

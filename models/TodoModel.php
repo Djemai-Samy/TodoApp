@@ -32,4 +32,21 @@ class todoModel extends DB{
     return $stmt -> fetch(PDO::FETCH_ASSOC);
   }
 
+  static function fetchAll($authorID){
+    $connect = DB::getConnection();
+    $stmt = $connect ->getConnect() -> prepare("SELECT * FROM todos WHERE authorID = ?");
+    $stmt -> bindParam(1, $authorID);
+    $stmt -> execute();
+    return $stmt -> fetchAll(PDO::FETCH_ASSOC); 
+  }
+
+  static function updateIsDone($todoID){
+    $active = true;
+    $connect = DB::getConnection();
+    $stmt = $connect -> getConnect() -> prepare("UPDATE todos SET isDone=? WHERE id=?");
+    $stmt -> bindParam(1, $active);
+    $stmt -> bindParam(2, $todoID);
+    $stmt -> execute();
+  }
+
 }
