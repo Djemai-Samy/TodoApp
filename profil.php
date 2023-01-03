@@ -38,14 +38,20 @@ $userController = UserController::createUserFromId($_SESSION['id']);
             echo "
             <div class='todo ".($todoTab['isDone'] ? "todoDone" : "todoNotDone")."'>
               <p>".$todoTab['content']."</p>
-              ".(!$todoTab['isDone'] ? 
-              "<form class='validateForm' action='/routes/validateTodo.php' method='GET'>
-                <button type='submit' name='validate' value='".$todoTab['id']."'>
-                  <img src='/images/check.svg' />
-                </button>
-              </form>" : "")."
-              
-            </div>
+              <div class='todo-controls'>
+                ".(!$todoTab['isDone'] ? 
+                "<form class='validateForm' action='/routes/validateTodo.php' method='GET'>
+                  <button type='submit' name='validate' value='".$todoTab['id']."'>
+                    <img src='/images/check.svg' />
+                  </button>
+                </form>" : "")."
+                <form class='validateForm' action='/routes/removeTodo.php' method='get'>
+                  <button name='remove' value='".$todoTab['id']."'>
+                    <img src='/images/remove.svg' />
+                  </button>
+                </form>
+              </div>
+              </div>
             ";
           }
         ?>

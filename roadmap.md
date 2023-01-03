@@ -31,7 +31,7 @@ Le todo: il faut TodoController, TodoModel.
 - script pour ajouter un todo dans la base données. DONE
 
 - afficher la liste des taches de l'utilisateur. DONE
-- Ajouter l'option pour valider une tache
-- Ajouter l'option pour supprimer une tache
+- Ajouter l'option pour valider une tache DONE
+- Ajouter l'option pour supprimer une tache. DONE
 
 ## Animer le bouton du menu
