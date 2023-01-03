@@ -1,5 +1,6 @@
 <?php
 session_start();
+var_dump($_SESSION['avatar']);
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ session_start();
     ?>
    
     <div class="profil-infos">
-      <img id="avatar" src='<?= "/images/users/".$_SESSION['avatar'] ?>'> 
+      <img id="avatar" src='<?= "/images/users/". $_SESSION['avatar'] ?>'> 
       <p><?= $_SESSION['email'] ?></p>
 
       <form action="/routes/uploadAvatar.php" method="POST" enctype="multipart/form-data">

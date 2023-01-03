@@ -122,12 +122,22 @@ class UserController{
   static function createUserFromId($id){
     $userFromDB = UserModel::fetchByID($id);
    
-    return $userFromDB;
+    return new self($userFromDB['email'], $userFromDB['password']);
   }
 
   function isImageValid($avatar){
     $imageInfo = pathinfo($avatar['name']);
 
-    return in_array($imageInfo['extension'], array('jpg', 'jpeg', 'png', 'gif'));
+    return in_array($imageInfo['extension'], array('jpg', 'jpeg', 'png', 'gif', 'svg'));
+  }
+
+  function saveImage($avatar){
+    $imageInfo = pathinfo($avatar['name']);
+    $image = $_SESSION['id'].'.'.$imageInfo['extension'];
+    copy($avatar['tmp_name'], '../images/users/'. $image);
+
+    //Utiliser le model pour mettre a jour user dans la DB.
+    $this ->userModel -> saveImageToDB($image);
+    return $image;
   }
 }
