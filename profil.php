@@ -36,9 +36,9 @@ $userController = UserController::createUserFromId($_SESSION['id']);
         <?php
           foreach($userController -> getTodos() as $key => $todoTab){
             echo "
-            <div class='".($todoTab['isDone'] ? "todoDone" : "todoNotDone")."'>
+            <div class='todo ".($todoTab['isDone'] ? "todoDone" : "todoNotDone")."'>
               <p>".$todoTab['content']."</p>
-              <form action='/routes/validateTodo.php' method='GET'>
+              <form class='validateForm' action='/routes/validateTodo.php' method='GET'>
                 <button type='submit' name='validate' value='".$todoTab['id']."'>
                 <img src='/images/check.svg' />
                 </button>

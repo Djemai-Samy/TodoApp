@@ -97,6 +97,37 @@ button{
   border-bottom: 2px solid green;
 }
 
+.todo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  margin: 1em;
+}
+
+.todo > form{
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.todo button{
+  background-color: transparent;
+  width: 20px;
+  min-width:40px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.todo button:hover{
+  background-color: rgba(60, 246, 60, 0.275);
+}
+
+.todo img{
+  width: 20px;
+}
+
 /* ctrl  + F5 */
 /* hot raload */
 
